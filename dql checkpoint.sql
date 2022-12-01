@@ -17,4 +17,5 @@ select product_name, customer_name, order_date from orders inner join product on
 
 select * from orders where order_date > current_date -interval '3 months';
 
-select customer_name from customer left join orders on customer.customer_id = orders.customer_id where orders.customer_id is null;
+select customer_name from customer 
+where customer_id not in (select customer_id from orders);
